@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addContact, deleteContact, filterContacts } from './redux/actions';
+import { addContact, deleteContact, filterContacts, postContact } from './redux/actions';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
@@ -31,7 +31,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleInput: event => dispatch(filterContacts(event)),
-    handleSubmit: contact => dispatch(addContact(contact)),
+    /*handleSubmit: contact => dispatch(addContact(contact)),*/
+    handleSubmit: contact => dispatch(postContact(contact)),
     handleDelete: id => dispatch(deleteContact(id)),
   };
 };

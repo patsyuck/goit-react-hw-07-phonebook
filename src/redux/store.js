@@ -1,10 +1,21 @@
 import { configureStore, createReducer } from '@reduxjs/toolkit';
 import { addContact, deleteContact, filterContacts } from './actions';
+import { applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 const initialState = {
   contacts: [],
   filter: '',
+  isFetching: false,
+  error: null
 };
+
+/*const myMiddleware = store => next => action => {
+  console.log('Alarm!')
+  next(action)
+}
+
+const middleware = [myMiddleware]*/
 
 const reducer = createReducer(initialState, {
   [addContact]: (state, { payload }) => {
@@ -17,17 +28,17 @@ const reducer = createReducer(initialState, {
       return state;
     } else {
       return {
-        contacts: [...state.contacts, payload],
-        filter: state.filter,
+        ...state,
+        contacts: [...state.contacts, payload]
       }
     }
   },
   [deleteContact]: (state, { payload }) => ({
-    contacts: state.contacts.filter(item => item.id !== payload),
-    filter: state.filter,
+    ...state,
+    contacts: state.contacts.filter(item => item.id !== payload)
   }),
   [filterContacts]: (state, { payload }) => ({
-    contacts: state.contacts,
+    ...state,
     filter: payload.target.value,
   }),
 });
@@ -36,6 +47,7 @@ const store = configureStore({
   reducer: {
     reducer,
   },
+  /*middleware*/
 });
 
 export default store;

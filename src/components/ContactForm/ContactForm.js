@@ -45,7 +45,7 @@ export class ContactForm extends Component {
           Number
           <input name="number" value={number} onChange={this.handleChange} />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" /*disable={isFetching}*/>Add contact</button>
       </form>
     );
   }

@@ -25,6 +25,7 @@ const mapStateToProps = state => {
   return {
     friends: state.reducer.contacts,
     filter: state.reducer.filter,
+    isFetching: state.reducer.isFetching
   };
 };
 

@@ -1,7 +1,7 @@
 import { configureStore, createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, filterContacts } from './actions';
-import { applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { addContact, deleteContact, filterContacts, fetchRequest, fetchSuccess, fetchError } from './actions';
+/*import { applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';*/
 
 const initialState = {
   contacts: [],
@@ -41,6 +41,19 @@ const reducer = createReducer(initialState, {
     ...state,
     filter: payload.target.value,
   }),
+  [fetchRequest]: (state, { payload }) => ({
+    ...state,
+    isFetching: true
+  }),
+  [fetchSuccess]: (state, { payload }) => ({
+    ...state,
+    isFetching: false
+  }),
+  [fetchError]: (state, { payload }) => ({
+    ...state,
+    isFetching: false,
+    error: payload
+  })
 });
 
 const store = configureStore({

@@ -1,5 +1,5 @@
 import { configureStore, createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, filterContacts, fetchRequest, fetchSuccess, fetchError } from './actions';
+import { addContact, deleteContact, filterContacts, getData, fetchRequest, fetchSuccess, fetchError } from './actions';
 /*import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';*/
 
@@ -10,14 +10,11 @@ const initialState = {
   error: null
 };
 
-/*const myMiddleware = store => next => action => {
-  console.log('Alarm!')
-  next(action)
-}
-
-const middleware = [myMiddleware]*/
-
 const reducer = createReducer(initialState, {
+  [getData]: (state, { payload }) => ({
+    ...state,
+    contacts: payload
+  }),
   [addContact]: (state, { payload }) => {
     if (
       state.contacts.some(
@@ -41,26 +38,28 @@ const reducer = createReducer(initialState, {
     ...state,
     filter: payload.target.value,
   }),
-  [fetchRequest]: (state, { payload }) => ({
+  [fetchRequest]: (state) => ({
     ...state,
     isFetching: true
   }),
-  [fetchSuccess]: (state, { payload }) => ({
+  [fetchSuccess]: (state) => ({
     ...state,
     isFetching: false
   }),
-  [fetchError]: (state, { payload }) => ({
-    ...state,
-    isFetching: false,
-    error: payload
-  })
+  [fetchError]: (state, { payload }) => {
+    console.log(payload)
+    return {
+      ...state,
+      isFetching: false,
+      error: payload
+    }
+  }
 });
 
 const store = configureStore({
   reducer: {
     reducer,
   },
-  /*middleware*/
 });
 
 export default store;

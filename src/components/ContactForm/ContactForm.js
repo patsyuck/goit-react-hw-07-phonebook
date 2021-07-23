@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 };
 
 export class ContactForm extends Component {
-  state = { ...INITIAL_STATE };
+  state = { ...INITIAL_STATE, toggler: this.props.isFetching };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -34,7 +34,7 @@ export class ContactForm extends Component {
   };
 
   render() {
-    const { name, number } = this.state;
+    const { name, number, toggler } = this.state;
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <label>
@@ -45,7 +45,7 @@ export class ContactForm extends Component {
           Number
           <input name="number" value={number} onChange={this.handleChange} />
         </label>
-        <button type="submit" /*disable={isFetching}*/>Add contact</button>
+        <button type="submit" disabled={toggler}>Add contact</button>
       </form>
     );
   }

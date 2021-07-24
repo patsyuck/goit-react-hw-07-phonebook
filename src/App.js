@@ -6,15 +6,12 @@ import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
 function App({ friends, filter, isFetching, handleData, handleInput, handleSubmit, handleDelete }) {
-  /*const isFetching = useSelector(state => state.reducer.isFetching)
-  console.log(isFetching)*/
-  /*const delContact = (id) => { dispatch(...(id)) }
-  const updateContact = (id) => {dispatch(...(id))}*/
+  /* 1-ий спосіб: через хуки в App */
   /*useEffect(() => {
     dispatch(getContacts())
     handleData()
   }, [])*/
-  /*console.log(getContacts())*/
+
   return (
     <div>
       <h1>Phonebook</h1>
@@ -31,6 +28,7 @@ function App({ friends, filter, isFetching, handleData, handleInput, handleSubmi
         friends={friends}
         filter={filter}
         onClick={id => handleDelete(id)}
+        onMount={() => handleData()}
       />
     </div>
   );
@@ -46,11 +44,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    /*handleData: () => dispatch(getContacts()),*/
+    handleData: () => dispatch(getContacts()),
     handleInput: event => dispatch(filterContacts(event)),
-    /*handleSubmit: contact => dispatch(addContact(contact)),*/
     handleSubmit: contact => dispatch(postContact(contact)),
-    /*handleDelete: id => dispatch(deleteContact(id)),*/
     handleDelete: id => dispatch(deleteExistContact(id))
   };
 };

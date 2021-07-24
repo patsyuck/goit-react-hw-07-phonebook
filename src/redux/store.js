@@ -13,7 +13,7 @@ const initialState = {
 const reducer = createReducer(initialState, {
   [getData]: (state, { payload }) => ({
     ...state,
-    contacts: payload
+    contacts: payload.data
   }),
   [addContact]: (state, { payload }) => {
     if (

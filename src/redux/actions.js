@@ -44,17 +44,3 @@ export const deleteExistContact = id => dispatch => {
             dispatch(fetchError(error))
         })
 }
-
-/*export const updateContacts = id => (dispatch, getState) => {
-    const { state } = getState()
-    const contact = state.contacts.find(i => i.id !== id)
-    dispatch(fetchRequest())
-    axios.put(`http://localhost:3004/contacts${contact.id}`, contact)
-        .then((data) => {
-            dispatch(fetchSuccess(data))
-            dispatch(updateContact(contact.id))
-        })
-        .catch((error) => {
-            dispatch(fetchError(error))
-        })
-}*/

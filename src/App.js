@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect, useSelector } from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import { getContacts, filterContacts, postContact, deleteExistContact } from './redux/actions';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
 function App({ friends, filter, isFetching, handleData, handleInput, handleSubmit, handleDelete }) {
-  /* 1-ий спосіб: через хуки в App */
-  /*useEffect(() => {
-    dispatch(getContacts())
-    handleData()
-  }, [])*/
 
   return (
     <div>

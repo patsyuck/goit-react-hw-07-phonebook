@@ -22,8 +22,10 @@ export class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { name, number } = this.state;
-
-    if (
+    
+    if ((name === '') || (number === '')) {
+      alert('Name and Number are required fields!')
+    } else if (
       this.props.friends.some(
         item => item.name.toLowerCase() === name.toLowerCase(),
       )

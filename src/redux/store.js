@@ -1,7 +1,5 @@
 import { configureStore, createReducer } from '@reduxjs/toolkit';
 import { addContact, deleteContact, filterContacts, getData, fetchRequest, fetchSuccess, fetchError } from './actions';
-/*import { applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';*/
 
 const initialState = {
   contacts: [],

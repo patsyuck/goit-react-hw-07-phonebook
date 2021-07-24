@@ -4,6 +4,7 @@ import { getContacts, filterContacts, postContact, deleteExistContact } from './
 import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
+import {getFriends, getFilter, getFetching} from './redux/contactsSelectors'
 
 function App({ friends, filter, isFetching, handleData, handleInput, handleSubmit, handleDelete }) {
 
@@ -32,9 +33,9 @@ function App({ friends, filter, isFetching, handleData, handleInput, handleSubmi
 
 const mapStateToProps = state => {
   return {
-    friends: state.reducer.contacts,
-    filter: state.reducer.filter,
-    isFetching: state.reducer.isFetching
+    friends: getFriends(state),
+    filter: getFilter(state),
+    isFetching: getFetching(state)
   };
 };
 

@@ -11,11 +11,6 @@
       "number": "45-17-26"
     },
     {
-      "id": "d77859be-bac1-4b41-9cde-08ace7078a80",
-      "name": "yurii",
-      "number": "3-12-98"
-    },
-    {
       "id": "2b6026ae-d3ff-4d47-8767-ca089c56b8c8",
       "name": "stepan",
       "number": "2-13-97"
@@ -29,6 +24,11 @@
       "id": "7850ed74-709f-4017-8872-25b5c1b706b1",
       "name": "dmytro",
       "number": "34-67-20"
+    },
+    {
+      "id": "75aed084-0307-40e6-969b-074f4def6116",
+      "name": "olena",
+      "number": "67-23-11"
     }
   ]
 }

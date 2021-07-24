@@ -23,12 +23,20 @@ export class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = this.state;
 
-    const contact = {
-      id: uuid(),
-      name: name,
-      number: number,
-    };
-    this.props.handlerSubmit(contact);
+    if (
+      this.props.friends.some(
+        item => item.name.toLowerCase() === name.toLowerCase(),
+      )
+    ) {
+      alert(`${name} is already in contacts!`);
+    } else {
+      const contact = {
+        id: uuid(),
+        name: name,
+        number: number,
+      };
+      this.props.handlerSubmit(contact);
+    }
 
     this.reset();
   };

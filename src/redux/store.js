@@ -15,21 +15,10 @@ const reducer = createReducer(initialState, {
     ...state,
     contacts: payload.data
   }),
-  [addContact]: (state, { payload }) => {
-    if (
-      state.contacts.some(
-        item => item.name.toLowerCase() === payload.name.toLowerCase(),
-      )
-    ) {
-      alert(`${payload.name} is already in contacts!`);
-      return state;
-    } else {
-      return {
-        ...state,
-        contacts: [...state.contacts, payload]
-      }
-    }
-  },
+  [addContact]: (state, { payload }) => ({
+    ...state,
+    contacts: [...state.contacts, payload]
+  }),
   [deleteContact]: (state, { payload }) => ({
     ...state,
     contacts: state.contacts.filter(item => item.id !== payload)

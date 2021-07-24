@@ -11,6 +11,7 @@ function App({ friends, filter, isFetching, handleData, handleInput, handleSubmi
     <div>
       <h1>Phonebook</h1>
       <ContactForm
+        friends={friends}
         handlerSubmit={contact => handleSubmit(contact)}
         isFetching={isFetching}
       />

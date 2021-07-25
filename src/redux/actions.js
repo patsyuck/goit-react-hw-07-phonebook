@@ -11,7 +11,8 @@ export const fetchError = createAction('API/ERROR')
 
 export const postContact = newContact => dispatch => {
     dispatch(fetchRequest())
-    axios.post('http://localhost:3004/contacts', newContact)
+        /*axios.post('http://localhost:3004/contacts', newContact)*/
+        axios.post('http://my-json-server.typicode.com/patsyuck/goit-react-hw-07-phonebook/contacts', newContact)
         .then(() => {
             dispatch(fetchSuccess())
             dispatch(addContact(newContact))
@@ -23,7 +24,8 @@ export const postContact = newContact => dispatch => {
 
 export const getContacts = () => dispatch => {
     dispatch(fetchRequest())
-    axios.get('http://localhost:3004/contacts')
+        /*axios.get('http://localhost:3004/contacts')*/
+        axios.get('http://my-json-server.typicode.com/patsyuck/goit-react-hw-07-phonebook/contacts')
         .then((data) => {
             dispatch(fetchSuccess())
             dispatch(getData(data))
@@ -35,7 +37,8 @@ export const getContacts = () => dispatch => {
 
 export const deleteExistContact = id => dispatch => {
     dispatch(fetchRequest())
-    axios.delete(`http://localhost:3004/contacts/${id}`)
+        /*axios.delete(`http://localhost:3004/contacts/${id}`)*/
+        axios.get('http://my-json-server.typicode.com/patsyuck/goit-react-hw-07-phonebook/contacts')
         .then((data) => {
             dispatch(fetchSuccess(data))
             dispatch(deleteContact(id))

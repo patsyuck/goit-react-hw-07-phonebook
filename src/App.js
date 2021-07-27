@@ -13,19 +13,19 @@ function App({ friends, filter, isFetching, handleData, handleInput, handleSubmi
       <h1>Phonebook</h1>
       <ContactForm
         friends={friends}
-        handlerSubmit={contact => handleSubmit(contact)}
+        handlerSubmit={handleSubmit}
         isFetching={isFetching}
       />
       <h2>Contacts</h2>
       <Filter
         filter={filter}
-        onChange={event => handleInput(event)}
+        onChange={handleInput}
       />
       <ContactList
         friends={friends}
         filter={filter}
-        onClick={id => handleDelete(id)}
-        onMount={() => handleData()}
+        onClick={handleDelete}
+        onMount={handleData}
       />
     </div>
   );
